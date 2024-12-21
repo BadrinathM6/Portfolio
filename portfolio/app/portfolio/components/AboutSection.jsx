@@ -8,6 +8,7 @@ import {
   useAnimation,
   useInView,
 } from "framer-motion";
+import Image from "next/image";
 
 const AboutSection = () => {
   const { scrollYProgress } = useScroll();
@@ -79,7 +80,7 @@ const AboutSection = () => {
 
   return (
     <div
-      className="relative min-h-screen bg-background p-8 md:ml-28"
+      className="relative min-h-screen bg-background p-8 md:ml-20 lg:ml-28"
       id="about"
     >
       <div className="max-w-6xl mx-auto">
@@ -242,7 +243,9 @@ const AboutSection = () => {
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <img
+                <Image
+                  width={100}
+                  height={100}
                   src="/me.jpg"
                   alt="Developer profile"
                   className="w-full h-full object-cover"

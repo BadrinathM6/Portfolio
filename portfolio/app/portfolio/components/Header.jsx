@@ -191,8 +191,8 @@ const Header = () => {
                   custom={i}
                   variants={navItemVariants}
                   onClick={() => {
-                  setIsMenuOpen(false); // Close mobile menu if open
-                }}
+                    setIsMenuOpen(false); // Close mobile menu if open
+                  }}
                 >
                   {link.name}
                 </motion.a>

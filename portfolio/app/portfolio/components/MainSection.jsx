@@ -2,7 +2,8 @@
 
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { Mail, Linkedin, Github, MoreVertical } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
+import Image from "next/image";
 
 const MainSection = () => {
   const sidebarVariants = {
@@ -31,24 +32,24 @@ const MainSection = () => {
     const isInView = useInView(ref, { once: true });
 
     const mainControls = useAnimation();
-    const slideControls  = useAnimation();
+    const slideControls = useAnimation();
 
     useEffect(() => {
-      if(isInView){
+      if (isInView) {
         mainControls.start("visible");
         slideControls.start("visible");
       }
-    }, [isInView])
+    }, [isInView]);
 
     return (
-      <div ref= {ref} className="relative overflow-hidden">
+      <div ref={ref} className="relative overflow-hidden">
         <motion.div
           variants={{
-            hidden: {opacity: 0, y:75},
-            visible: {opacity: 1, y: 0},
+            hidden: { opacity: 0, y: 75 },
+            visible: { opacity: 1, y: 0 },
           }}
-          initial= "hidden"
-          animate= {mainControls}
+          initial="hidden"
+          animate={mainControls}
           transition={{ duration: 0.5, delay: 0.25 }}
           className={className}
         >
@@ -56,11 +57,11 @@ const MainSection = () => {
         </motion.div>
         <motion.div
           variants={{
-            hidden: {left: 0},
-            visible: {left: "100%"},
+            hidden: { left: 0 },
+            visible: { left: "100%" },
           }}
-          initial= "hidden"
-          animate= {slideControls}
+          initial="hidden"
+          animate={slideControls}
           transition={{ duration: 0.5, ease: "easeIn" }}
           className="absolute top-0 left-0 w-full h-full bg-textcolor"
         >
@@ -151,10 +152,16 @@ const MainSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <img
+              <Image
                 src="/Developer Activity-bro.svg"
-                alt="Developer Activity Illustration"
+                alt="Developer Activity"
+                width={400}
+                height={400}
+                priority
                 className="w-full h-auto"
+                sizes="(max-width: 768px) 100vw"
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3CfeColorMatrix values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 100 -1' result='s'/%3E%3CfeFlood x='0' y='0' width='100%25' height='100%25'/%3E%3CfeComposite operator='out' in='s'/%3E%3C/filter%3E%3Cimage width='100%25' height='100%25' x='0' y='0' preserveAspectRatio='none' style='filter: url(%23b);' href='/Developer Activity-bro.svg'/%3E%3C/svg%3E"
               />
             </motion.div>
 
@@ -225,10 +232,16 @@ const MainSection = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <img
+          <Image
             src="/Developer Activity-bro.svg"
-            alt="Developer Activity Illustration"
+            alt="Developer Activity"
+            width={600}
+            height={600}
+            priority
             className="w-full max-w-lg mx-auto h-auto"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3CfeColorMatrix values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 100 -1' result='s'/%3E%3CfeFlood x='0' y='0' width='100%25' height='100%25'/%3E%3CfeComposite operator='out' in='s'/%3E%3C/filter%3E%3Cimage width='100%25' height='100%25' x='0' y='0' preserveAspectRatio='none' style='filter: url(%23b);' href='/Developer Activity-bro.svg'/%3E%3C/svg%3E"
           />
         </motion.div>
       </div>
