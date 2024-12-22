@@ -23,6 +23,9 @@ export default {
         serif: ['Playfair Display', 'serif'],
         button: ['Nunito', 'sans-serif'],
       },
+      screens: {
+        'tablet-md': { min: '768px', max: '879px' }, // Custom range for tablet
+      },
     },
   },
   plugins: [],

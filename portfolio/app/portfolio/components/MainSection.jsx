@@ -29,7 +29,9 @@ const MainSection = () => {
 
   const RevealText = ({ children, delay = 0, className }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, {
+      once: true,
+    });
 
     const mainControls = useAnimation();
     const slideControls = useAnimation();

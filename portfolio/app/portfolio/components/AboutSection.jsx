@@ -36,7 +36,9 @@ const AboutSection = () => {
 
   const RevealText = ({ children, delay = 0, className }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, {
+      once: true,
+    });
 
     const mainControls = useAnimation();
     const slideControls = useAnimation();
@@ -97,7 +99,7 @@ const AboutSection = () => {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="w-8 h-8"
+              className="w-6 h-6 md:w-8 md:h-8"
             />
             <h3 className="text-4xl md:text-4xl font-heading font-bold text-anothertextcolor">
               About Me

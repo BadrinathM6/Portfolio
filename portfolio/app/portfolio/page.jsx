@@ -1,15 +1,31 @@
-import React from "react";
-import Header from "./components/Header";
-import MainSection from "./components/MainSection";
-import AboutSection from "./components/AboutSection";
+"use client";
+
+import React, { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("./components/Header"));
+const MainSection = dynamic(() => import("./components/MainSection"), {
+  loading: () => <div className="h-screen" />,
+  ssr: false,
+});
+const AboutSection = dynamic(() => import("./components/AboutSection"), {});
+import Preloader from "./components/StartPage";
 
 const Portfolio = () => {
+  const [loading, setLoading] = useState(true);
   return (
-    <div className="bg-background text-gray-200 min-h-screen relative">
-      <Header />
-      <MainSection />
-      <AboutSection />
-    </div>
+    <main>
+      {loading ? (
+        <Preloader onComplete={() => setLoading(false)} transitionStyle="smooth"/>
+      ) : (
+        <Suspense fallback={<div className="min-h-screen bg-background" />}>
+          <div className="bg-background text-gray-200 relative">
+            <Header />
+            <MainSection />
+            <AboutSection />
+          </div>
+        </Suspense>
+      )}
+    </main>
   );
 };
 
